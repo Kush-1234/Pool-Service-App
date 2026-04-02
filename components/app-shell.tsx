@@ -31,14 +31,17 @@ export function AppShell({
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="grid min-h-screen lg:grid-cols-[260px_1fr]">
-        <aside className="border-b border-slate-200 bg-slate-950 px-5 py-6 text-white lg:border-b-0 lg:border-r">
-          <div className="mb-8">
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Pool Service App</p>
-            <h1 className="mt-2 text-xl font-semibold">Pool Cleaners Inc.</h1>
-            <p className="mt-3 text-sm text-slate-300">{user.name}</p>
-            <p className="text-xs uppercase tracking-wide text-brand-100">{user.role.replaceAll("_", " ")}</p>
+    <div className="app-wave-bg min-h-screen">
+      <div className="grid min-h-screen lg:grid-cols-[290px_1fr]">
+        <aside className="ocean-panel relative border-b border-white/10 px-5 py-6 text-white lg:border-b-0 lg:border-r lg:border-white/10">
+          <div className="mb-8 rounded-[1.6rem] border border-white/10 bg-white/5 p-5 shadow-[0_24px_60px_rgba(4,8,28,0.28)]">
+            <p className="text-[0.68rem] uppercase tracking-[0.32em] text-sky-200/80">Pool Service App</p>
+            <h1 className="font-display mt-3 text-[1.8rem] font-bold leading-none">Bluewater Route Desk</h1>
+            <div className="mt-5 rounded-[1.35rem] bg-white/10 p-3">
+              <p className="text-sm font-medium text-white">{user.name}</p>
+              <p className="mt-1 text-[0.68rem] uppercase tracking-[0.22em] text-cyan-100/80">{user.role.replaceAll("_", " ")}</p>
+            </div>
+            <div className="wave-lines mt-5 h-12 rounded-2xl opacity-70" />
           </div>
           <nav className="space-y-2">
             {navItems
@@ -48,8 +51,8 @@ export function AppShell({
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "block rounded-xl px-3 py-2 text-sm text-slate-300 hover:bg-slate-900 hover:text-white",
-                    pathname === item.href && "bg-brand-600 text-white hover:bg-brand-600",
+                    "block rounded-2xl px-4 py-3 text-sm font-medium text-slate-200/88 hover:bg-white/8 hover:text-white",
+                    pathname === item.href && "bg-[linear-gradient(135deg,#ff972f,#ff7f32)] text-slate-950 shadow-[0_18px_36px_rgba(255,151,47,0.22)] hover:bg-[linear-gradient(135deg,#ff972f,#ff7f32)]",
                   )}
                 >
                   {item.label}
@@ -57,12 +60,12 @@ export function AppShell({
               ))}
           </nav>
           <form action={logoutAction} className="mt-8">
-            <button type="submit" className="rounded-xl bg-slate-900 px-3 py-2 text-sm text-slate-200 hover:bg-slate-800">
+            <button type="submit" className="rounded-2xl border border-white/14 bg-white/6 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10">
               Sign out
             </button>
           </form>
         </aside>
-        <main className="p-4 md:p-6 lg:p-8">{children}</main>
+        <main className="relative p-4 md:p-6 lg:p-8">{children}</main>
       </div>
     </div>
   );

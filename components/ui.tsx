@@ -11,10 +11,11 @@ export function PageHeader({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+    <div className="mb-7 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
       <div>
-        <h1 className="text-2xl font-semibold text-slate-950">{title}</h1>
-        {description ? <p className="mt-1 text-sm text-slate-600">{description}</p> : null}
+        <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-sky-700/80">Pool Operations</p>
+        <h1 className="font-display text-3xl font-bold tracking-tight text-slate-950 md:text-[2.2rem]">{title}</h1>
+        {description ? <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">{description}</p> : null}
       </div>
       {action}
     </div>
@@ -28,11 +29,21 @@ export function Card({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={cn("rounded-2xl border border-slate-200 bg-white p-5 shadow-sm", className)}>{children}</div>;
+  return (
+    <div
+      className={cn(
+        "surface-glass pool-grid rounded-[1.75rem] border p-5 shadow-[0_20px_45px_rgba(15,27,53,0.08)]",
+        className,
+      )}
+      style={{ borderColor: "var(--card-border)" }}
+    >
+      {children}
+    </div>
+  );
 }
 
 export function SectionTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className="mb-4 text-lg font-semibold text-slate-950">{children}</h2>;
+  return <h2 className="font-display mb-4 text-xl font-bold tracking-tight text-slate-950">{children}</h2>;
 }
 
 export function Button({
@@ -49,13 +60,17 @@ export function Button({
   type?: "button" | "submit";
 }) {
   const styles = {
-    primary: "bg-brand-600 text-white hover:bg-brand-700",
-    secondary: "bg-slate-900 text-white hover:bg-slate-800",
-    ghost: "bg-slate-100 text-slate-700 hover:bg-slate-200",
+    primary: "bg-[linear-gradient(135deg,#ff972f,#ff7f32)] text-slate-950 hover:brightness-105",
+    secondary: "bg-[linear-gradient(135deg,#0f123f,#14347f)] text-white hover:brightness-110",
+    ghost: "bg-white/70 text-slate-700 hover:bg-white",
     danger: "bg-rose-600 text-white hover:bg-rose-700",
   };
 
-  const classes = cn("inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium", styles[variant], className);
+  const classes = cn(
+    "inline-flex items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-semibold shadow-[0_12px_30px_rgba(15,27,53,0.08)]",
+    styles[variant],
+    className,
+  );
 
   if (href) return <Link href={href} className={classes}>{children}</Link>;
   return <button type={type} className={classes}>{children}</button>;
@@ -70,7 +85,7 @@ export function StatusBadge({ label, tone = "default" }: { label: string; tone?:
     info: "bg-sky-100 text-sky-700",
   };
 
-  return <span className={cn("inline-flex rounded-full px-2.5 py-1 text-xs font-medium", classes[tone])}>{label}</span>;
+  return <span className={cn("inline-flex rounded-full px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em]", classes[tone])}>{label}</span>;
 }
 
 export function StatCard({
@@ -83,9 +98,9 @@ export function StatCard({
   detail?: React.ReactNode;
 }) {
   return (
-    <Card className="space-y-1">
-      <p className="text-sm text-slate-500">{label}</p>
-      <p className="text-2xl font-semibold text-slate-950">{value}</p>
+    <Card className="space-y-2">
+      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-slate-500">{label}</p>
+      <p className="font-display text-3xl font-bold tracking-tight text-slate-950">{value}</p>
       {detail ? <div className="text-sm text-slate-500">{detail}</div> : null}
     </Card>
   );
@@ -94,7 +109,7 @@ export function StatCard({
 export function EmptyState({ title, description }: { title: string; description: string }) {
   return (
     <Card className="text-center">
-      <p className="text-base font-semibold text-slate-900">{title}</p>
+      <p className="font-display text-lg font-bold text-slate-900">{title}</p>
       <p className="mt-2 text-sm text-slate-600">{description}</p>
     </Card>
   );
