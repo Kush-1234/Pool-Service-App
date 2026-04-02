@@ -12,27 +12,27 @@ export default async function DashboardPage() {
     return (
       <div className="space-y-6">
         <PageHeader title="Technician Dashboard" description="Today’s route, upcoming jobs, and your recent submitted work." />
-        <Card className="ocean-panel overflow-hidden text-white">
+        <Card className="overflow-hidden border-sky-100 bg-[linear-gradient(180deg,#ffffff,#f5f9fc)]">
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-sky-200/80">Today on deck</p>
-              <h2 className="font-display mt-3 text-4xl font-bold tracking-tight">Stay ahead of the route and keep every stop inspection-ready.</h2>
-              <p className="mt-4 max-w-xl text-sm leading-7 text-slate-200/90">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-sky-700/70">Today on deck</p>
+              <h2 className="font-display mt-3 text-3xl font-bold tracking-tight text-slate-950">Stay ahead of the route and keep every stop inspection-ready.</h2>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600">
                 Your dashboard is tuned for field work: assigned jobs, recent logs, and the next visits that need attention.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              <div className="rounded-[1.4rem] bg-white/10 p-4">
-                <p className="text-[0.7rem] uppercase tracking-[0.24em] text-sky-100/75">Jobs today</p>
-                <p className="font-display mt-2 text-4xl font-bold">{data.todayJobs.length}</p>
+              <div className="rounded-xl border border-slate-200 bg-white p-4">
+                <p className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">Jobs today</p>
+                <p className="font-display mt-2 text-4xl font-bold text-slate-950">{data.todayJobs.length}</p>
               </div>
-              <div className="rounded-[1.4rem] bg-white/10 p-4">
-                <p className="text-[0.7rem] uppercase tracking-[0.24em] text-sky-100/75">Upcoming</p>
-                <p className="font-display mt-2 text-4xl font-bold">{data.upcomingJobs.length}</p>
+              <div className="rounded-xl border border-slate-200 bg-white p-4">
+                <p className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">Upcoming</p>
+                <p className="font-display mt-2 text-4xl font-bold text-slate-950">{data.upcomingJobs.length}</p>
               </div>
-              <div className="rounded-[1.4rem] bg-[linear-gradient(135deg,rgba(255,151,47,0.95),rgba(255,127,50,0.95))] p-4 text-slate-950">
-                <p className="text-[0.7rem] uppercase tracking-[0.24em] text-slate-900/70">Recent logs</p>
-                <p className="font-display mt-2 text-4xl font-bold">{data.recentLogs.length}</p>
+              <div className="rounded-xl border border-slate-200 bg-white p-4">
+                <p className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">Recent logs</p>
+                <p className="font-display mt-2 text-4xl font-bold text-slate-950">{data.recentLogs.length}</p>
               </div>
             </div>
           </div>
@@ -101,35 +101,35 @@ export default async function DashboardPage() {
         title={isOwner ? "Owner Dashboard" : "Operations Dashboard"}
         description={isOwner ? "Scheduling, customer growth, technician load, and customer communication in one view." : "Chemistry oversight, alerts, incidents, and reporting readiness across all pools."}
       />
-      <Card className="ocean-panel overflow-hidden text-white">
+      <Card className="overflow-hidden border-sky-100 bg-[linear-gradient(180deg,#ffffff,#f5f9fc)]">
         <div className="grid gap-6 xl:grid-cols-[1.4fr_0.9fr]">
           <div>
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-sky-200/80">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-sky-700/70">
               {isOwner ? "State of service" : "Control tower"}
             </p>
-            <h2 className="font-display mt-3 text-4xl font-bold tracking-tight">
+            <h2 className="font-display mt-3 text-3xl font-bold tracking-tight text-slate-950">
               {isOwner
                 ? "A clearer picture of routes, revenue, staffing, and water quality."
                 : "Dispatch, chemistry, and customer follow-up in one operational view."}
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-200/90">
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
               {isOwner
                 ? "This board combines route activity, open issues, and financial progress so the business feels disciplined instead of reactive."
                 : "Stay on top of today’s appointments, active alerts, and the work that needs a quick follow-up before it becomes a customer problem."}
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-[1.4rem] bg-white/10 p-4">
-              <p className="text-[0.68rem] uppercase tracking-[0.22em] text-sky-100/75">{isOwner ? "Upcoming jobs" : "Jobs today"}</p>
-              <p className="font-display mt-2 text-4xl font-bold">{isOwner ? data.upcomingJobs.length : data.todayJobs.length}</p>
+            <div className="rounded-xl border border-slate-200 bg-white p-4">
+              <p className="text-[0.68rem] uppercase tracking-[0.18em] text-slate-500">{isOwner ? "Upcoming jobs" : "Jobs today"}</p>
+              <p className="font-display mt-2 text-4xl font-bold text-slate-950">{isOwner ? data.upcomingJobs.length : data.todayJobs.length}</p>
             </div>
-            <div className="rounded-[1.4rem] bg-white/10 p-4">
-              <p className="text-[0.68rem] uppercase tracking-[0.22em] text-sky-100/75">Open alerts</p>
-              <p className="font-display mt-2 text-4xl font-bold">{data.activeAlerts.length}</p>
+            <div className="rounded-xl border border-slate-200 bg-white p-4">
+              <p className="text-[0.68rem] uppercase tracking-[0.18em] text-slate-500">Open alerts</p>
+              <p className="font-display mt-2 text-4xl font-bold text-slate-950">{data.activeAlerts.length}</p>
             </div>
-            <div className="rounded-[1.4rem] bg-[linear-gradient(135deg,rgba(255,151,47,0.96),rgba(255,127,50,0.96))] p-4 text-slate-950 sm:col-span-2">
-              <p className="text-[0.68rem] uppercase tracking-[0.22em] text-slate-900/70">{isOwner ? "Tracked pools" : "30-day equipment spend"}</p>
-              <p className="font-display mt-2 text-4xl font-bold">{isOwner ? data.pools.length : formatCurrency(data.expenseSnapshot)}</p>
+            <div className="rounded-xl border border-slate-200 bg-white p-4 sm:col-span-2">
+              <p className="text-[0.68rem] uppercase tracking-[0.18em] text-slate-500">{isOwner ? "Tracked pools" : "30-day equipment spend"}</p>
+              <p className="font-display mt-2 text-4xl font-bold text-slate-950">{isOwner ? data.pools.length : formatCurrency(data.expenseSnapshot)}</p>
             </div>
           </div>
         </div>

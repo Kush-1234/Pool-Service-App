@@ -31,7 +31,7 @@ body {
 }
 
 a {
-  @apply text-brand-600 hover:text-brand-700;
+  @apply transition-colors;
 }
 
 h1,

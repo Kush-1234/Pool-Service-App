@@ -13,7 +13,7 @@ export function PageHeader({
   return (
     <div className="mb-7 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
       <div>
-        <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-sky-700/80">Pool Operations</p>
+        <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-sky-700/70">Pool Operations</p>
         <h1 className="font-display text-3xl font-bold tracking-tight text-slate-950 md:text-[2.2rem]">{title}</h1>
         {description ? <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">{description}</p> : null}
       </div>
@@ -32,7 +32,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "surface-glass pool-grid rounded-[1.35rem] border p-5 shadow-[0_16px_36px_rgba(15,27,53,0.06)]",
+        "surface-glass rounded-[1.1rem] border p-5 shadow-[0_14px_30px_rgba(15,27,53,0.05)]",
         className,
       )}
       style={{ borderColor: "var(--card-border)" }}
@@ -67,7 +67,7 @@ export function Button({
   };
 
   const classes = cn(
-    "inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold shadow-[0_10px_24px_rgba(15,27,53,0.07)]",
+    "inline-flex items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold shadow-[0_8px_20px_rgba(15,27,53,0.06)]",
     styles[variant],
     className,
   );
