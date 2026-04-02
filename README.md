@@ -1,6 +1,6 @@
 # Pool Service App
 
-A working MVP pool service management platform built with Next.js App Router, TypeScript, Tailwind CSS, Prisma, SQLite, Zod, React Hook Form, and date-fns.
+A working MVP pool service management platform built with Next.js App Router, TypeScript, Tailwind CSS, Prisma, PostgreSQL, Zod, React Hook Form, and date-fns.
 
 It is designed for a software engineering course demo and supports:
 
@@ -40,28 +40,29 @@ cp .env.example .env
 npm install
 ```
 
-3. Generate Prisma client and create the SQLite database:
+3. Create a Neon PostgreSQL database and add its connection strings to `.env`:
+
+```bash
+DATABASE_URL="postgresql://..."
+DIRECT_URL="postgresql://..."
+```
+
+`DATABASE_URL` should be the pooled Neon connection string and `DIRECT_URL` should be the direct connection string for Prisma migrations.
+
+4. Generate Prisma client and run the database migrations:
 
 ```bash
 npm run db:generate
-npm run db:push
+npm run db:migrate
 ```
 
-If `db:push` fails in your local environment, use the included SQLite bootstrap fallback:
-
-```bash
-npm run db:bootstrap
-```
-
-The fallback writes the schema to `prisma/dev.db`, which matches the default Prisma SQLite location used by this project.
-
-4. Seed demo data:
+5. Seed demo data:
 
 ```bash
 npm run db:seed
 ```
 
-5. Start the app:
+6. Start the app:
 
 ```bash
 npm run dev
@@ -85,6 +86,30 @@ If they are not configured, the app still works:
 - the message contents are logged to the server console
 
 This keeps the demo reliable in local development.
+
+## Vercel deployment
+
+Set these environment variables in Vercel for `Production`, `Preview`, and `Development`:
+
+- `DATABASE_URL`
+- `DIRECT_URL`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
+
+Deploy-time database workflow:
+
+```bash
+npm run db:migrate:deploy
+```
+
+After the first migration, run the seed once against your Neon database if you want the demo accounts and sample data:
+
+```bash
+npm run db:seed
+```
 
 ## Seeded scenarios
 
@@ -135,7 +160,6 @@ This is intentionally an MVP. A few practical simplifications were made:
 To refresh local demo data:
 
 ```bash
-rm -f prisma/dev.db prisma/dev.db-journal
-npm run db:push
+npm run db:migrate
 npm run db:seed
 ```

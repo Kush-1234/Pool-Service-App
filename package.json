@@ -9,8 +9,8 @@
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
+    "db:migrate:deploy": "prisma migrate deploy",
     "db:push": "prisma db push",
-    "db:bootstrap": "mkdir -p prisma && npx prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma --script | sqlite3 prisma/dev.db",
     "db:seed": "tsx prisma/seed.ts"
   },
   "prisma": {
